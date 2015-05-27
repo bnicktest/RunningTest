@@ -1,13 +1,18 @@
-﻿
+﻿@using System.Web.Optimization
+
 @{
     Layout = null;
 }
+
+
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <title>@ViewBag.Title - SimpleBlog</title>
+
+    @Styles.Render("~/styles")
 </head>
 <body>
 <header>
@@ -17,7 +22,7 @@
 
     @if (User.Identity.IsAuthenticated)
     {
-        <p>Welcom back, @User.Identity.Name</p>
+        <p>Welcome back, @User.Identity.Name</p>
         <a href="@Url.RouteUrl("logout")">Logout</a>
 
          if (User.IsInRole("admin"))
@@ -36,6 +41,7 @@
     &copy; @DateTime.UtcNow.Year - Me
 </footer>
 
+    @Scripts.Render("~/scripts")
     @RenderSection("Scripts", false)
 </body>
 </html>
